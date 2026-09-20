@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --bg-canvas: #f1f4f9;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --border-subtle: #cbd5e1;
+    --border-strong: #94a3b8;
+    --border-accent: #7c3aed;
+    
+    --glass-bg: #ffffff;
+    --glass-border: #cbd5e1;
+    --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    --card-shadow-hover: 0 16px 36px -6px rgba(109, 40, 217, 0.18), 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+
+    --accent-violet: #6d28d9;
+    --accent-indigo: #4338ca;
+    --accent-cyan: #0284c7;
+    --accent-emerald: #059669;
+    --accent-amber: #d97706;
+    --accent-rose: #e11d48;
+    --accent-pink: #db2777;
+
+    /* Transit Circuit Route Line Colors */
+    --line-orange: #ea580c;
+    --line-cyan: #0891b2;
+    --line-violet: #7c3aed;
+    --line-emerald: #059669;
+    --line-pink: #db2777;
+
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-display: "Outfit", "Space Grotesk", sans-serif;
+    --font-heading: "Oswald", "Impact", sans-serif;
+    --font-mono: "Space Mono", "IBM Plex Mono", monospace;
+  }
+
+  .dark {
+    --bg-canvas: #07080f;
+    --bg-surface: #0e111c;
+    --bg-surface-elevated: #161a29;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --text-muted: #64748b;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --border-accent: rgba(167, 139, 250, 0.4);
+
+    --glass-bg: rgba(14, 17, 28, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --card-shadow: 0 14px 40px -12px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.1);
+    --card-shadow-hover: 0 22px 50px -15px rgba(167, 139, 250, 0.25), 0 0 2px rgba(167, 139, 250, 0.4);
+
+    --accent-violet: #a78bfa;
+    --accent-indigo: #818cf8;
+    --accent-cyan: #38bdf8;
+    --accent-emerald: #34d399;
+    --accent-amber: #fbbf24;
+    --accent-rose: #fb7185;
+    --accent-pink: #f472b6;
+
+    /* Transit Circuit Route Line Colors */
+    --line-orange: #f97316;
+    --line-cyan: #22d3ee;
+    --line-violet: #a78bfa;
+    --line-emerald: #34d399;
+    --line-pink: #ec4899;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background: var(--accent-violet);
+  color: #ffffff;
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Theme-adaptive glass card */
+.theme-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.theme-card-elevated {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Floating Glass Navbar / Pill */
+.glass-pill {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* Kinetic Physics Typography Repel */
+.physics-char {
+  display: inline-block;
+  will-change: transform;
+  user-select: none;
+  cursor: default;
+}
+
+/* Ambient Subtle Background Grid */
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+  pointer-events: none;
+  opacity: 0.6;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+}
+
+/* Monospace Comment Tag */
+.code-comment {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-violet);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Transit Circuit Route Animations */
+@keyframes transitSignal {
+  0% {
+    stroke-dashoffset: 200;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+}
+
+.transit-signal-line {
+  stroke-dasharray: 12 18;
+  animation: transitSignal 3s linear infinite;
+}
+
+@keyframes stationPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.3;
+  }
+}
+
+.station-ping {
+  animation: stationPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Vibrant Glow Utility */
+.glow-box-violet {
+  box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.3);
+}
+
+.glow-box-orange {
+  box-shadow: 0 0 30px -5px rgba(249, 115, 22, 0.3);
+}
+
+.glow-box-cyan {
+  box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.3);
+}
+
+.glow-box-emerald {
+  box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.3);
+}
+
+.glow-box-pink {
+  box-shadow: 0 0 30px -5px rgba(236, 72, 153, 0.3);
+}
+
+@keyframes windingRoadFlow {
+  0% {
+    stroke-dashoffset: 200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.winding-path-dash {
+  animation: windingRoadFlow 12s linear infinite;
+}
+
