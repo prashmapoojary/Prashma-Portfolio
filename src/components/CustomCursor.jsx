@@ -44,8 +44,11 @@ export default function CustomCursor({ cursorText }) {
     };
   }, [cursorX, cursorY, isVisible]);
 
-  if (typeof window !== "undefined" && window.matchMedia("(max-width: 1024px)").matches) {
-    return null; // Disabled on mobile/touch screens
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 1024px), (pointer: coarse), (prefers-reduced-motion: reduce)").matches
+  ) {
+    return null; // Disabled on mobile/touch screens and reduced motion
   }
 
   const size = cursorText ? 72 : isHovering ? 36 : 14;

@@ -24,6 +24,8 @@ export default function Contact() {
   const { isDark } = useTheme();
   const [copied, setCopied] = useState(false);
   const [istTime, setIstTime] = useState("");
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
 
   // Live IST Clock
   useEffect(() => {
@@ -48,6 +50,16 @@ export default function Contact() {
     navigator.clipboard.writeText(personalInfo.contact.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
+  };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+    setSubmitted(true);
+    const mailtoUrl = `mailto:${personalInfo.contact.email}?subject=${encodeURIComponent(
+      `Portfolio Inquiry from ${formData.name}`
+    )}&body=${encodeURIComponent(formData.message + "\n\nFrom: " + formData.email)}`;
+    window.location.href = mailtoUrl;
   };
 
   return (
@@ -83,10 +95,10 @@ export default function Contact() {
 
         {/* Contact Hub Card */}
         <div className="theme-card p-8 md:p-12 relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left: Direct Dispatch */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left: Direct Message Form & Email Buttons */}
             <div className="lg:col-span-7 flex flex-col items-start gap-6">
-              <div className="space-y-4">
+              <div className="space-y-4 w-full">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-violet-500/40 shadow-sm shrink-0">
                     <img src={prashImg} alt="Prashma Poojary" className="w-full h-full object-cover object-top" />
@@ -106,22 +118,74 @@ export default function Contact() {
                   className="font-display font-bold text-2xl sm:text-3xl"
                   style={{ color: "var(--text-primary)" }}
                 >
-                  Have a mission or an engineering challenge?
+                  Have a mission or engineering challenge?
                 </h3>
-                <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                  Whether you are architecting a new web product, scaling a data pipeline, or looking for an agile developer in the Udupi / Manipal or remote space, my inbox is always open.
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                  Whether you are architecting a new web product, scaling a data pipeline, or looking for an agile full-stack developer, send me a quick message directly below.
                 </p>
               </div>
 
-              {/* 1-Click Email Action Button */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+              {/* Quick Contact Form */}
+              <form onSubmit={handleSubmitForm} className="w-full flex flex-col gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="p-3 rounded-xl border text-xs font-mono focus:outline-none focus:ring-2 focus:ring-violet-500"
+                    style={{
+                      backgroundColor: isDark ? "rgba(255,255,255,0.03)" : "#f8fafc",
+                      borderColor: isDark ? "var(--border-subtle)" : "#cbd5e1",
+                      color: "var(--text-primary)",
+                    }}
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="p-3 rounded-xl border text-xs font-mono focus:outline-none focus:ring-2 focus:ring-violet-500"
+                    style={{
+                      backgroundColor: isDark ? "rgba(255,255,255,0.03)" : "#f8fafc",
+                      borderColor: isDark ? "var(--border-subtle)" : "#cbd5e1",
+                      color: "var(--text-primary)",
+                    }}
+                  />
+                </div>
+                <textarea
+                  placeholder="Your Message..."
+                  rows={3}
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="p-3 rounded-xl border text-xs font-mono focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  style={{
+                    backgroundColor: isDark ? "rgba(255,255,255,0.03)" : "#f8fafc",
+                    borderColor: isDark ? "var(--border-subtle)" : "#cbd5e1",
+                    color: "var(--text-primary)",
+                  }}
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-3 rounded-xl font-mono text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>{submitted ? "Message Dispatched! Opening Mailer..." : "Send Message"}</span>
+                </button>
+              </form>
+
+              {/* 1-Click Email Action Copy */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto pt-2">
                 <button
                   onClick={handleCopyEmail}
-                  className="flex items-center justify-between sm:justify-start gap-3 px-6 py-3.5 rounded-xl font-mono text-xs font-bold text-white shadow-lg transition-all duration-200 active:scale-95 cursor-pointer"
+                  className="flex items-center justify-between sm:justify-start gap-3 px-5 py-2.5 rounded-xl font-mono text-xs font-bold text-white shadow-md transition-all duration-200 active:scale-95 cursor-pointer"
                   style={{ backgroundColor: "var(--accent-violet)" }}
                 >
                   <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4" />
+                    <Mail className="w-3.5 h-3.5" />
                     <span>{personalInfo.contact.email}</span>
                   </div>
                   {copied ? (
@@ -132,18 +196,6 @@ export default function Contact() {
                     <Copy className="w-3.5 h-3.5 opacity-80 hover:opacity-100 ml-2" />
                   )}
                 </button>
-
-                <a
-                  href={`mailto:${personalInfo.contact.email}`}
-                  className="inline-flex items-center justify-center gap-1.5 px-5 py-3.5 rounded-xl font-mono text-xs font-semibold border transition-all duration-200 hover:bg-black/5 dark:hover:bg-white/5"
-                  style={{
-                    borderColor: "var(--border-strong)",
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  <span>Open Mailer</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
               </div>
 
               {/* Optional Phone (controlled by config toggle) */}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prashma-portfolio-6iqd75g4t-prashma-poojarys-projects.vercel.app/sitemap.xml

@@ -598,6 +598,20 @@ function DeckCard({
 
             {/* Action Buttons Row */}
             <div className="flex flex-wrap items-center gap-2.5 pt-2">
+              {/* Case Study Modal Trigger */}
+              <button
+                onClick={() => onSelectCaseStudy(project)}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold border transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-sm"
+                style={{
+                  borderColor: isDark ? "rgba(255,255,255,0.2)" : palette.lightBorder,
+                  color: primaryTextColor,
+                  backgroundColor: isDark ? "rgba(255,255,255,0.06)" : palette.lightCardSurface,
+                }}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <span>Case Study</span>
+              </button>
+
               {project.links?.live && (
                 <div className="relative">
                   <a
@@ -640,7 +654,7 @@ function DeckCard({
                   }}
                 >
                   <GithubIcon className="w-3.5 h-3.5" />
-                  <span>Source</span>
+                  <span>GitHub</span>
                 </a>
               )}
 
@@ -656,7 +670,7 @@ function DeckCard({
                   }}
                 >
                   <FileText className="w-3.5 h-3.5" />
-                  <span>Conference Paper (PDF)</span>
+                  <span>Paper (PDF)</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               )}
@@ -668,7 +682,7 @@ function DeckCard({
                   className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl font-mono text-xs font-bold bg-sky-500/15 text-sky-600 dark:text-sky-300 border border-sky-500/30 transition-all hover:bg-sky-500/25 active:scale-95 cursor-pointer"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
-                  <span>Watch Video Demo</span>
+                  <span>Video Demo</span>
                 </button>
               )}
             </div>
@@ -696,6 +710,7 @@ export default function Projects({ onOpenVideo }) {
   const { isDark } = useTheme();
   const trackRef = useRef(null);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [caseStudyProject, setCaseStudyProject] = useState(null);
 
   // Scroll tracking for the 3D deck
   const { scrollYProgress } = useScroll({
@@ -802,6 +817,7 @@ export default function Projects({ onOpenVideo }) {
                 total={projectsData.length}
                 smoothProgress={smoothProgress}
                 onOpenVideo={onOpenVideo}
+                onSelectCaseStudy={(p) => setCaseStudyProject(p)}
                 isDark={isDark}
               />
             ))}
@@ -852,6 +868,126 @@ export default function Projects({ onOpenVideo }) {
           </div>
         </div>
       </div>
+
+      {/* Case Study Modal Overlay */}
+      {caseStudyProject && (
+        <div
+          onClick={() => setCaseStudyProject(null)}
+          className="fixed inset-0 z-[99999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl border p-6 sm:p-8 shadow-2xl cursor-default flex flex-col gap-6"
+            style={{
+              backgroundColor: isDark ? "#0d111d" : "#ffffff",
+              borderColor: isDark ? "rgba(167, 139, 250, 0.4)" : "#cbd5e1",
+              color: "var(--text-primary)",
+            }}
+          >
+            {/* Header */}
+            <div className="flex items-start justify-between gap-4 border-b pb-4 border-black/10 dark:border-white/10">
+              <div>
+                <span className="font-mono text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider">
+                  CASE STUDY // {caseStudyProject.category}
+                </span>
+                <h3 className="font-display font-black text-2xl sm:text-3xl mt-1">
+                  {caseStudyProject.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setCaseStudyProject(null)}
+                className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-500 hover:text-black dark:hover:text-white cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Overview */}
+            <div>
+              <h4 className="font-mono text-xs uppercase tracking-wider text-gray-400 mb-1">
+                // System Summary & Objective
+              </h4>
+              <p className="text-sm sm:text-base leading-relaxed">
+                {caseStudyProject.description}
+              </p>
+            </div>
+
+            {/* Key Deliverables & Architecture */}
+            <div>
+              <h4 className="font-mono text-xs uppercase tracking-wider text-gray-400 mb-2">
+                // Architecture & Deliverables
+              </h4>
+              <div className="space-y-2">
+                {caseStudyProject.highlights.map((h, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>{h}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Metric Footnote */}
+            {caseStudyProject.metricNotes && (
+              <div className="p-3.5 rounded-2xl bg-violet-500/10 border border-violet-500/20 text-xs font-mono">
+                <span className="font-bold text-violet-600 dark:text-violet-400 block mb-0.5">
+                  📊 Verified Metric Footnote:
+                </span>
+                <span className="text-gray-600 dark:text-gray-300">
+                  {caseStudyProject.metricNotes}
+                </span>
+              </div>
+            )}
+
+            {/* Tech Stack */}
+            <div>
+              <h4 className="font-mono text-xs uppercase tracking-wider text-gray-400 mb-2">
+                // Tech Stack
+              </h4>
+              <div className="flex flex-wrap gap-1.5">
+                {caseStudyProject.technologies.map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-xs px-2.5 py-1 rounded-md border bg-black/5 dark:bg-white/5"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-black/10 dark:border-white/10">
+              {caseStudyProject.links?.live && (
+                <a
+                  href={caseStudyProject.links.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl font-mono text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 transition-all flex items-center gap-1.5"
+                >
+                  View Live System <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              )}
+              {caseStudyProject.links?.github && (
+                <a
+                  href={caseStudyProject.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl font-mono text-xs font-bold border transition-all flex items-center gap-1.5"
+                >
+                  GitHub Repository <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              )}
+              <button
+                onClick={() => setCaseStudyProject(null)}
+                className="ml-auto px-4 py-2 rounded-xl font-mono text-xs font-semibold text-gray-500 hover:text-black dark:hover:text-white"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

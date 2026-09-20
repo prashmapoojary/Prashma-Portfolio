@@ -8,7 +8,6 @@ import {
   Terminal,
   Sparkles,
   CheckCircle2,
-  Activity,
   Zap,
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";

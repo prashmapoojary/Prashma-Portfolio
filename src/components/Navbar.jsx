@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, X } from "lucide-react";
+import { Sun, Moon, Menu, X, FileText } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import prashProfileIcon from "../assets/prash.jpeg";
 
@@ -44,6 +44,14 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Accessibility Skip Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[99999] px-4 py-2 bg-violet-600 text-white rounded-lg font-mono text-xs font-bold shadow-2xl focus:outline-none focus:ring-2 focus:ring-violet-400"
+      >
+        Skip to main content
+      </a>
+
       <motion.header
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -123,8 +131,21 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Right Action Cluster: Theme Switcher & Resume */}
+          {/* Right Action Cluster: Theme Switcher & Resume Button */}
           <div className="flex items-center gap-2">
+            {/* Resume Download Pill Button */}
+            <a
+              href="/assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Prashma_Poojary_Resume.pdf"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-mono text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 transition-all duration-200 shadow-md hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-violet-400"
+              title="Download Prashma's Resume"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Resume</span>
+            </a>
+
             {/* Theme Toggle Button */}
             <motion.button
               whileTap={{ scale: 0.9 }}
