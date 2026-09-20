@@ -354,11 +354,6 @@ export default function Hero() {
                 {/* Subtle Inner Vignette Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 pointer-events-none" />
 
-                {/* Click hint pill */}
-                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[9px] font-mono text-white/90 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  👆 Click to swap photo
-                </div>
-
                 {/* Name & Role Overlay Tag at Bottom of Portrait */}
                 <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3 rounded-2xl bg-black/70 backdrop-blur-md border border-white/20 text-white shadow-lg">
                   <div className="flex items-center justify-between">
