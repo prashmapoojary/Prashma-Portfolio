@@ -79,6 +79,7 @@ function KineticTitleLine({ text, className, color }) {
 export default function Hero() {
   const { isDark } = useTheme();
   const [perspective, setPerspective] = useState("web"); // 'web' | 'data'
+  const [isAlternateImg, setIsAlternateImg] = useState(false);
 
   const webDetails = {
     tag: "// SYSTEM.DEV_CORE",
@@ -338,16 +339,25 @@ export default function Hero() {
                   : "0 25px 50px -15px rgba(109, 40, 217, 0.15), 0 10px 25px -5px rgba(15, 23, 42, 0.08)",
               }}
             >
-              {/* Image Container */}
-              <div className="relative aspect-[3/4] w-full rounded-[24px] overflow-hidden bg-black/5 shadow-inner">
+              {/* Image Container with Click Toggle */}
+              <div
+                onClick={() => setIsAlternateImg(!isAlternateImg)}
+                className="relative aspect-[3/4] w-full rounded-[24px] overflow-hidden bg-black/5 shadow-inner cursor-pointer"
+                title="Click to toggle portrait view"
+              >
                 <img
-                  src={profileImg}
+                  src={isAlternateImg ? prashImg : profileImg}
                   alt="Prashma Poojary — Full Stack Web Developer & Data Analyst"
-                  className="w-full h-full object-cover object-top filter brightness-[1.02] contrast-[1.03] transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top filter brightness-[1.02] contrast-[1.03] transition-all duration-500 group-hover:scale-105"
                 />
 
                 {/* Subtle Inner Vignette Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 pointer-events-none" />
+
+                {/* Click hint pill */}
+                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[9px] font-mono text-white/90 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  👆 Click to swap photo
+                </div>
 
                 {/* Name & Role Overlay Tag at Bottom of Portrait */}
                 <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3 rounded-2xl bg-black/70 backdrop-blur-md border border-white/20 text-white shadow-lg">
