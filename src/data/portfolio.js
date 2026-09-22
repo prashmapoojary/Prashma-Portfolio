@@ -32,7 +32,6 @@ export const personalInfo = {
     github: "https://github.com/prashmapoojary",
     instagram: "", // Placeholder - replace when provided
     profileImage: "/assets/profile.jpg",
-    resumePdf: "/assets/resume.pdf",
   },
 };
 
@@ -284,7 +283,7 @@ export const projectsData = [
     links: {
       github: "https://github.com/prashmapoojary/nandini-pricing-strategy",
       live: "https://nandini-pricing-engine.streamlit.app/",
-      paper: "/assets/resume.pdf",
+      paper: "/assets/conference-paper.pdf",
     },
     video: "",
     image: "",

@@ -258,10 +258,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="/assets/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                download="Prashma_Poojary_Resume.pdf"
+                href="#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-mono text-xs uppercase tracking-wider font-semibold border transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
                 style={{
                   backgroundColor: isDark ? "rgba(255,255,255,0.04)" : "#ffffff",
@@ -269,7 +266,7 @@ export default function Hero() {
                   color: "var(--text-primary)",
                 }}
               >
-                Download Resume 📄
+                Get In Touch 💬
               </a>
 
               {/* Social Links Strip */}

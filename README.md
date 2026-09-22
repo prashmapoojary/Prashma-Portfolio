@@ -21,7 +21,7 @@ A high-craft, high-performance portfolio engineered with React 19, Vite, Tailwin
 - 📇 **3D Scroll-Peeling Deck**: 9 stacked project cards with distinct opaque pastel/obsidian themes, custom interactive UI mockups, and GitHub/Live links.
 - 🔍 **Interactive Case Study Modals**: In-depth breakdowns of system architecture, deliverables, tech stacks, and verified metric footnotes.
 - ✈️ **Paper Aeroplane Flight Path**: Curved Bezier timeline animating through 5 key career & academic waypoints with infinite looping and 2s stop pauses.
-- 📄 **Direct Resume & Paper Access**: Instant PDF download for resume (`/assets/resume.pdf`) and ICKACS-2026 conference paper.
+- 📄 **Direct Research Paper & Certificate Access**: Instant PDF access for ICKACS-2026 conference paper and NPTEL IIT certificates.
 - 🌓 **Opaque Color System**: Cohesive Light & Dark Mode palette designed for maximum contrast and zero visual ghosting.
 - ⚡ **Optimized Performance**: Code-split vendor chunks (`framer-motion`, `lucide-react`, `lenis`), `React.lazy()` route loading, and Vercel Analytics.
 - ♿ **Accessibility & Reduced Motion**: Skip to content link, custom cursor with `(pointer: coarse)` and `(prefers-reduced-motion)` awareness.
