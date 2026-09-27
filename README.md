@@ -5,7 +5,7 @@
 [![Vite 6](https://img.shields.io/badge/Vite-6.0-646cff?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-v4.0-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
 
-A high-craft, high-performance portfolio engineered with React 19, Vite, Tailwind CSS v4, Framer Motion, and Lenis smooth scrolling. Highlights 9 full-stack web and data analytics projects, interactive 3D card decks, infinite aeroplane flight path timeline, verified NPTEL IIT toppers, and ICKACS-2026 conference research.
+A high-craft, high-performance portfolio engineered with React 19, Vite, Tailwind CSS v4, Framer Motion, and Lenis smooth scrolling. Highlights 8 full-stack web and data analytics projects, interactive 3D card decks, infinite aeroplane flight path timeline, verified NPTEL IIT toppers, and ICKACS-2026 conference research.
 
 ---
 
@@ -48,10 +48,9 @@ A high-craft, high-performance portfolio engineered with React 19, Vite, Tailwin
 3. **Stock Management System** — Real-time inventory control app with multi-warehouse catalogs and low-stock alerts.
 4. **College Website Portal** — Full-stack campus portal serving 500+ users with 40% estimated admin effort reduction.
 5. **E-Commerce Intelligence Platform** — Predictive analytics pipeline with RFM customer segments and Streamlit/Power BI dashboards.
-6. **Dynamic Pricing Strategy (ICKACS-2026)** — Machine learning pricing and demand elasticity model for Nandini Dairy.
-7. **Customer Review Intelligence System** — Transformer-based NLP sentiment analysis and BERTopic complaints scoring.
-8. **Multi-Agent Research Assistant** — Autonomous multi-agent graph automating web research and report synthesis.
-9. **Enterprise RAG Q&A System** — Retrieval-Augmented Generation system over knowledge bases using FAISS vector search.
+6. **AI-Powered Price Optimization & Competitor Intelligence** — Econometric Log-Log OLS price elasticity modeling across 90 SKUs, Gradient Boosting demand forecasting, MySQL star-schema, and Tableau Hyper API extracts.
+7. **Multi-Agent Research Assistant** — Autonomous multi-agent graph automating web research and report synthesis.
+8. **Enterprise RAG Q&A System** — Retrieval-Augmented Generation system over knowledge bases using FAISS vector search.
 
 ---
 
