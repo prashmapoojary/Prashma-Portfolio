@@ -5,7 +5,7 @@
 [![Vite 6](https://img.shields.io/badge/Vite-6.0-646cff?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-v4.0-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
 
-A high-craft, high-performance portfolio engineered with React 19, Vite, Tailwind CSS v4, Framer Motion, and Lenis smooth scrolling. Highlights 8 full-stack web and data analytics projects, interactive 3D card decks, infinite aeroplane flight path timeline, verified NPTEL IIT toppers, and ICKACS-2026 conference research.
+A high-craft, high-performance portfolio engineered with React 19, Vite, Tailwind CSS v4, Framer Motion, and Lenis smooth scrolling. Highlights 9 full-stack web, data analytics, and generative AI projects, interactive 3D card decks, infinite aeroplane flight path timeline, verified NPTEL IIT toppers, and ICKACS-2026 conference research.
 
 ---
 
@@ -32,12 +32,12 @@ A high-craft, high-performance portfolio engineered with React 19, Vite, Tailwin
 
 | Category | Technologies |
 |---|---|
-| **Frontend Core** | React 19, Vite 6, Tailwind CSS v4, JavaScript (ESNext) |
+| **Frontend Core** | React 19, Vite 6, Tailwind CSS v4, JavaScript (ESNext), Chart.js |
 | **Animation & Motion** | Framer Motion 12, Lenis 1.1 (Smooth Scroll) |
 | **Icons & UI Design** | Lucide React, Custom SVG Monograms, Pinned Devicons |
-| **Analytics & Hosting** | Vercel Platform, `@vercel/analytics` |
-| **Backend & Databases** | Node.js, Express.js, PostgreSQL, MongoDB, Socket.io, REST APIs |
-| **Data & ML Stacks** | Python, SQL, Scikit-learn, XGBoost, Prophet, Power BI, Tableau, Streamlit, LangChain, FAISS |
+| **Analytics & Hosting** | Vercel Platform, Netlify, `@vercel/analytics` |
+| **Backend & Databases** | Node.js, Express.js, PostgreSQL, MongoDB, MySQL, Socket.io, REST APIs |
+| **Data & ML Stacks** | Python, SQL, Scikit-learn, VADER, TF-IDF/NMF, Statsmodels, XGBoost, Prophet, Power BI, Tableau, Streamlit, LangChain, FAISS |
 
 ---
 
@@ -49,8 +49,9 @@ A high-craft, high-performance portfolio engineered with React 19, Vite, Tailwin
 4. **College Website Portal** — Full-stack campus portal serving 500+ users with 40% estimated admin effort reduction.
 5. **E-Commerce Intelligence Platform** — Predictive analytics pipeline with RFM customer segments and Streamlit/Power BI dashboards.
 6. **AI-Powered Price Optimization & Competitor Intelligence** — Econometric Log-Log OLS price elasticity modeling across 90 SKUs, Gradient Boosting demand forecasting, MySQL star-schema, and Tableau Hyper API extracts.
-7. **Multi-Agent Research Assistant** — Autonomous multi-agent graph automating web research and report synthesis.
-8. **Enterprise RAG Q&A System** — Retrieval-Augmented Generation system over knowledge bases using FAISS vector search.
+7. **Customer Review Intelligence & Early-Warning NLP Analytics System** — VADER sentiment analysis & dual-model NMF topic extraction across 6,600+ reviews, composite 0–100 risk algorithm, and Netlify Command Center dashboard.
+8. **Multi-Agent Research Assistant** — Autonomous multi-agent graph automating web research and report synthesis.
+9. **Enterprise RAG Q&A System** — Retrieval-Augmented Generation system over knowledge bases using FAISS vector search.
 
 ---
 
